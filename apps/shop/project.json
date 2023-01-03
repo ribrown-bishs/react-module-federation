@@ -1,10 +1,11 @@
 {
-  "root": "apps/shop",
+  "name": "shop",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/shop/src",
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/web:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
@@ -50,7 +51,9 @@
       "options": {
         "buildTarget": "shop:build",
         "hmr": true,
-        "port": 4203
+        "port": 4203,
+        "allowedHosts": "any",
+        "host": "local-ip"
       },
       "configurations": {
         "development": {
@@ -71,7 +74,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/shop"],
+      "outputs": ["{workspaceRoot}/coverage/apps/shop"],
       "options": {
         "jestConfig": "apps/shop/jest.config.ts",
         "passWithNoTests": true
